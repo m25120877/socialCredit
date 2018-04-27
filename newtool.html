@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Quiz</title>
+
+<style>
+div#test{ border:#5AB029 3px solid; padding:10px 40px 40px 40px; background-color:#E5FCE3; width:50%;}
+</style>
+
+<script type="text/javascript">
+// pos is position of where the user in the test or which question they're up to
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC,chD, correct = 0;
+// this is a multidimensional array with 4 inner array elements with 5 elements inside them
+// if you don't want answers viewable in the code, then you should use PHP and mySQL database
+var questions = [
+  ["What is 36 + 42", "64", "78", "76", "B"],
+  ["What is 7 x 4?", "21", "27", "28", "C"],
+  ["What is 16 / 4?", "4", "6", "3", "A"],
+  ["What is 8 x 12?", "88", "112", "96", "C"],
+  ["What is 36 + 42", "64", "78", "76", "B"],
+  ["What is 7 x 4?", "21", "27", "28", "C"],
+  ["What is 16 / 4?", "4", "6", "3", "A"],
+  ["What is 8 x 12?", "88", "112", "96", "C"],
+  ["What is 16 / 4?", "4", "6", "3", "A"],
+  ["What is 8 x 12?", "88", "112", "96", "C"]
+  ];
+// this get function is short for the getElementById function	
+function get(x){
+  return document.getElementById(x);
+}
+function renderQuestion(){
+  test = get("test");
+  if(pos >= questions.length){
+    test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+    if (correct<1){
+        test.innerHTML = "Your report has been sent to related departments. Your bank account have been frozen, and FBI agents are going to visit you soon.";
+        
+    }else if (correct < 3){
+        test.innerHTML = "Warning! You are not allow to use the public transportation such as train and planes";
+    }else if (correct < 6){
+        test.innerHTML = "Be aware! Your letters, emails, and cell phone will be monitered, and your dangerous activities will be notified to people who closes to you.";
+    }else if (correct <8){
+        test.innerHTML = "Your name will be kept in record in case any future crime.";
+    }else if(correct <11){
+        test.innerHTML = "You are a good citizen! Share this exam to your friends and families to earn more credit! Let's make American great again!"; 
+    }
+    // resets the variable to allow users to restart the test
+    pos = 0;
+    correct = 0;
+    // stops rest of renderQuestion function running when test is completed
+    return false;
+  }
+  get("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+  question = questions[pos][0];
+  chA = questions[pos][1];
+  chB = questions[pos][2];
+  chC = questions[pos][3];
+  chD = questions[pos][4];
+
+  test.innerHTML = "Jkjlkjsad! <h3>"+question+"</h3>";
+  // the += appends to the data we started on the line above
+  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br><br>";
+  test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+}
+function checkAnswer(){
+  // use getElementsByName because we have an array which it will loop through
+  choices = document.getElementsByName("choices");
+  for(var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+        console.log(choice);
+    }
+  }
+  // checks if answer matches the correct choice
+  if(choice == questions[pos][4]){
+    //each time there is a correct answer this value increases
+    correct++;
+      console.log("CORRECT!");
+  }
+  // changes position of which character user is on
+  pos++;
+  // then the renderQuestion function runs again to go to next question
+  renderQuestion();
+}
+window.addEventListener("load", renderQuestion, false);
+</script>
+</head>
+<body>
+<h2 id="test_status"></h2>
+<div id="test"></div>
+<div>This is where I write stuff.</div>
+</body>
+
+</html>
