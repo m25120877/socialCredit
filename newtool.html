@@ -34,16 +34,19 @@ function renderQuestion(){
   if(pos >= questions.length){
     test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
     if (correct<1){
-        test.innerHTML = "Your report has been sent to related departments. Your bank account have been frozen, and FBI agents are going to visit you soon.";
+        test.innerHTML = "You are a good citizen! Share this exam to your friends and families to earn more credit! Let's make American great again!";
         
     }else if (correct < 3){
-        test.innerHTML = "Warning! You are not allow to use the public transportation such as train and planes";
-    }else if (correct < 6){
-        test.innerHTML = "Be aware! from now on, Your letters, emails, and cell phone will be monitered, and your dangerous activities will be notified to people who closes to you.";
-    }else if (correct <8){
         test.innerHTML = "Your name will be kept in record in case any future crime.";
+        
+    }else if (correct < 6 ){
+        test.innerHTML = "Be aware! from now on, Your letters, emails, and cell phone will be monitered, and your dangerous activities will be notified to people who closes to you.";
+        
+    }else if (correct <8){
+        test.innerHTML = "Warning! You are not allow to use the public transportation such as train and planes";
+        
     }else if(correct <11){
-        test.innerHTML = "You are a good citizen! Share this exam to your friends and families to earn more credit! Let's make American great again!"; 
+        test.innerHTML = "Your report has been sent to related departments. Your bank account have been frozen, and FBI agents are going to visit you soon."; 
     }
     // resets the variable to allow users to restart the test
     pos = 0;
