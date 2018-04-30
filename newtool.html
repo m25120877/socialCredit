@@ -5,7 +5,7 @@
 <title>Social credit self-evaluation</title>
 
 <style>
-div#test{ border:#CDCDCD 3px solid; padding:10px 40px 40px 40px; background-color:#FFF; width:50%;}
+div#test{ border:#CDCDCD 3px solid; padding:10px 40px 40px 40px; background-color:#FFC0CB; width:50%;}
 </style>
 
 <script type="text/javascript">
@@ -37,13 +37,13 @@ function renderQuestion(){
         test.innerHTML = "You are a good citizen! Share this exam to your friends and families to earn more credit! Let's make American great again!";
         
     }else if (correct < 3){
-        test.innerHTML = "Your name will be kept in record in case any future crime.";
+        test.innerHTML = "Your name will be kept in record in case any future crime, but don't worry! The government would not give any immediate panalty as long as you follow the rule.";
         
     }else if (correct < 6 ){
-        test.innerHTML = "Be aware! from now on, Your letters, emails, and cell phone will be monitered, and your dangerous activities will be notified to people who closes to you.";
+        test.innerHTML = "Be aware! Your letters, emails, and cell phone will be monitered, and your dangerous activities will be notified to people who closes to you.";
         
     }else if (correct <8){
-        test.innerHTML = "Warning! You are not allow to use the public transportation such as train and planes";
+        test.innerHTML = "Warning! You are not allow to use the public transportation such as train and planes.";
         
     }else if(correct <11){
         test.innerHTML = "Your report has been sent to related departments. Your bank account have been frozen, and FBI agents are going to visit you soon."; 
@@ -92,7 +92,8 @@ window.addEventListener("load", renderQuestion, false);
 </script>
 </head>
     <h1>This is a social credit self evaluation test.</h1>
-    <div>Complete the following questions to get your rating on Social credit level.</div>
+    <div>Complete the following questions to get your rating on Social credit level. Share the exam arround to get more credit!</div>
+
 <body>
 <h2 id="test_status"></h2>
 <div id="test"></div>
